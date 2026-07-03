@@ -4,6 +4,8 @@ Cursor cost controls for agent work: RTK-backed shell usage, targeted context ga
 
 This plugin is intentionally small. It does not ship a custom Cursor hook in v0.1. RTK integration is delegated to RTK's supported Cursor setup through `rtk init --global --agent cursor`.
 
+It is not a workflow plugin and does not define handoffs, implementation roles, delivery-review loops, or task execution packets.
+
 ## Installation
 
 Copy or clone this repository to `~/.cursor/plugins/local/geldmacher-efficiency/` so Cursor discovers it automatically, or install it from a marketplace that lists this repository.
@@ -26,7 +28,7 @@ Use the plugin when a Cursor session should spend fewer tokens and avoid broad e
 
 ## RTK Integration
 
-`/setup-rtk` verifies RTK and guides Cursor's supported RTK integration. It previews setup before applying changes.
+`/setup-rtk` verifies RTK and guides Cursor's supported RTK integration. It previews setup before applying changes and must not install RTK or mutate global Cursor configuration without explicit confirmation.
 
 ## Cost Budget
 
@@ -34,7 +36,9 @@ Use the plugin when a Cursor session should spend fewer tokens and avoid broad e
 
 ## Development
 
-Agent and contributor instructions live in `AGENTS.md`. Before publishing or submitting the plugin, validate it with:
+This repository intentionally does not include an `AGENTS.md` file because Cursor injects it automatically when the plugin is loaded. Agent-facing plugin behavior belongs in `commands/`, `skills/`, `agents/`, and `rules/`; human-facing usage and maintenance notes belong in this README.
+
+Before publishing or submitting the plugin, validate it with:
 
 ```bash
 node scripts/validate-plugin.mjs
