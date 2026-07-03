@@ -18,10 +18,6 @@ Apply this rule to all Cursor agent work.
 - Run the cheapest validation that materially proves the change.
 - Use `rtk gain` after command-heavy work when savings evidence is useful.
 
-## Boundary With Workflow Plugin
-
-This rule only governs cost-reduction behavior. It must not define task handoffs, execution roles, delivery-review loops, or implementation plan structure. Use the workflow plugin for those concerns.
-
 ## RTK Cursor Setup
 
 For Cursor integration, use RTK's supported setup command:

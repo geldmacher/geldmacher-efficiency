@@ -9,7 +9,7 @@ description: Define Cursor cost-reduction guardrails for RTK usage, context size
 
 Reduce Cursor spend by controlling token-heavy context, shell output, repeated exploration, avoidable retries, and validation cost.
 
-This skill does not plan the task, compile handoffs, assign roles, define implementation steps, or replace the workflow plugin. It only defines cost controls that can be used beside any existing workflow.
+This skill does not plan the task, compile handoffs, assign roles or define implementation steps. It only defines cost controls that can be used beside any existing workflow.
 
 ## Cost Drivers
 
@@ -45,4 +45,3 @@ Keep the output short and operational. Each item must be a constraint or cost-sa
 - Do not define task order or implementation ownership.
 - Do not invent workflow stages.
 - Do not emit handoff content.
-- If task planning is needed, tell the user to use the workflow plugin or Cursor's normal planning mode.
