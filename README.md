@@ -16,8 +16,7 @@ Use the plugin when a Cursor session should spend fewer tokens and avoid broad e
 
 1. Run `/setup-rtk` once per machine to verify RTK and prepare Cursor's RTK integration.
 2. Run `/cost-budget` when a session needs explicit cost guardrails for context, commands, dry-runs, validation, and stop conditions.
-3. Use Cursor or the workflow plugin for actual task planning and execution.
-4. Run `/efficiency-review` after meaningful work to find wasted context, missed RTK usage, validation cost issues, and cost controls to improve next time.
+3. Run `/efficiency-review` after meaningful work to find wasted context, missed RTK usage, validation cost issues, and cost controls to improve next time.
 
 ## Components
 
