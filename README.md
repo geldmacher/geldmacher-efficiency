@@ -1,4 +1,4 @@
-# Geldmacher Efficiency
+# Efficiency
 
 Cursor cost controls for agent work: RTK-backed shell usage, targeted context gathering, bounded command output, lean validation, and concrete efficiency review.
 
@@ -63,8 +63,6 @@ The validator checks `.cursor-plugin/plugin.json`, the configured logo path, and
 
 ## References
 
-- [Cursor Plugins documentation](https://cursor.com/docs/plugins)
-- [cursor/plugin-template](https://github.com/cursor/plugin-template)
 - [RTK supported agents](https://www.rtk-ai.app/docs/getting-started/supported-agents/)
 - [RTK installation](https://www.rtk-ai.app/docs/getting-started/installation/)
 - [RTK configuration](https://www.rtk-ai.app/docs/getting-started/configuration/)
