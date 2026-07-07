@@ -1,0 +1,14 @@
+---
+description: Safety checks for context-optimization edits to agent guidance, rules, skills, commands, and docs.
+globs: "AGENTS.md,.agents/**,.cursor/**,docs/agents/**,skills/**,commands/**,agents/**,rules/**"
+alwaysApply: false
+---
+
+# Context Optimization Safety
+
+When reducing agent context:
+
+- Prefer concise entrypoints plus links over deleting source-of-truth guidance.
+- Preserve mandatory security, environment, deployment, logging, domain-boundary, and verification constraints.
+- Measure before and after token estimates for edited always-loaded files.
+- Run the relevant control-plane, plugin, or docs validation after changes.
