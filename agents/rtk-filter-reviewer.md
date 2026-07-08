@@ -20,7 +20,7 @@ Check:
 - Are regexes precise enough to avoid unrelated commands?
 - Do filters preserve failures, warnings, stack traces, file paths, request IDs, and useful diagnostics?
 - Does each created or broadened filter have an inline test?
-- Was validation run with `rtk verify` or was a clear blocker reported?
+- Was validation run with `rtk verify`, and did it actually include project filters instead of warning that untrusted filters were skipped?
 
 ## Output
 

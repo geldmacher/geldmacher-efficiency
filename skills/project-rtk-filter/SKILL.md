@@ -44,6 +44,22 @@ For each group:
 - Add `on_empty` so a fully-filtered success is still understandable.
 - Add at least one inline `[[tests.<filter-name>]]` fixture that proves important diagnostics survive filtering.
 
+Use this minimal shape for new project filters, replacing the name, regex, examples, and success message with project-specific values:
+
+```toml
+[filters.project_check]
+description = "Compact project check output"
+match_command = "^ddev\\s+check\\b"
+strip_ansi = true
+filter_stderr = true
+on_empty = "ddev check: ok"
+
+[[tests.project_check]]
+name = "keeps failures"
+input = "ERROR tests/ExampleTest.php failed"
+expected = "ERROR tests/ExampleTest.php failed"
+```
+
 Prefer conservative filters:
 
 - Keep `FAIL`, `ERROR`, `WARN`, stack traces, assertion messages, file paths, command summaries, and non-zero-exit diagnostics.
@@ -55,10 +71,11 @@ Prefer conservative filters:
 Use the cheapest available checks:
 
 1. Validate TOML syntax and RTK filter tests with `rtk verify` when available.
-2. If project-local filters require trust, tell the user to run `rtk trust` instead of doing it silently.
-3. Smoke-test representative commands through RTK only when they are finite and safe.
-4. For DDEV commands, avoid starting duplicate dev servers. Prefer documented finite gates and small `ddev exec` smoke commands.
-5. Report any RTK-version limitation, such as a local version that can execute filters through `rtk <command>` but cannot rewrite TOML-only commands through the Cursor hook.
+2. If `rtk verify` warns that project filters were skipped, such as `untrusted project filters skipped`, do not report project-filter validation as passed.
+3. If project-local filters require trust, tell the user to run `rtk trust` from the project root instead of doing it silently, then rerun `rtk verify`.
+4. Smoke-test representative commands through RTK only when they are finite and safe.
+5. For DDEV commands, avoid starting duplicate dev servers. Prefer documented finite gates and small `ddev exec` smoke commands.
+6. Report any RTK-version limitation, such as a local version that can execute filters through `rtk <command>` but cannot rewrite TOML-only commands through the Cursor hook.
 
 ## Output
 
