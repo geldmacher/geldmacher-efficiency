@@ -10,6 +10,12 @@ test("the plugin stays within its context budget", () => {
   assert.deepEqual(budgetFailures(measurement), []);
 });
 
+test("semantic communication adds no recurring context over the v0.4 baseline", () => {
+  const measurement = measureContext(defaultRoot);
+  assert.ok(measurement.alwaysOnTokens <= 206, `always-on regression: ${measurement.alwaysOnTokens} > 206`);
+  assert.ok(measurement.totalTokens <= 436, `total regression: ${measurement.totalTokens} > 436`);
+});
+
 test("an oversized always-on rule exceeds the budget", async () => {
   const root = await mkdtemp(join(tmpdir(), "efficiency-context-"));
   try {

@@ -16,8 +16,9 @@ Complete this checklist before tagging a plugin release. Use a clean local plugi
 - [ ] Install or link the repository at `~/.cursor/plugins/local/geldmacher-efficiency`.
 - [ ] Run `Developer: Reload Window` or fully restart Cursor.
 - [ ] Confirm the Efficiency plugin is visible in Cursor settings.
-- [ ] Confirm all six commands, five skills, three agents, and three rules are visible.
+- [ ] Confirm all seven commands, six skills, three agents, and three rules are visible.
 - [ ] Confirm `context-usage-optimizer` is available to the model and `/plan-context-optimization` can use it.
+- [ ] Confirm `session-context-compaction` is not available to automatic model invocation and `/compact-session` can use it explicitly.
 
 ## Safe behavior
 
@@ -41,6 +42,17 @@ Complete this checklist before tagging a plugin release. Use a clean local plugi
 - [ ] A fixture with at least six changed files or ten relevant shell commands delegates to `efficiency-reviewer`.
 - [ ] A filter fixture with three groups or a broad generic regex delegates to `rtk-filter-reviewer`.
 - [ ] An always-on safety edit or context reduction above 25% delegates to `context-optimization-reviewer`.
+- [ ] Main-agent chat leads with the result and omits request restatement, routine narration, and repeated conclusions.
+- [ ] A plugin reviewer and a project-defined subagent without copied communication rules return only new, task-relevant information with evidence and uncertainty preserved.
+- [ ] Ambiguous, security-sensitive, or irreversible scenarios expand enough to preserve conditions, ordering, and risk.
+- [ ] Requested code, documentation, commit text, and other artifacts follow their own format instead of the chat style.
+
+## Session compaction
+
+- [ ] `/compact-session` returns only non-empty state sections plus the fresh-task instruction.
+- [ ] Exact identifiers, paths, commands, numbers, errors, negations, conditions, causality, and ordering survive the snapshot.
+- [ ] A fresh task can continue from the snapshot without inventing decisions, losing open items, or treating inferred claims as confirmed.
+- [ ] Run fixed A/B scenarios for long chat, tool-heavy work, and subagent review against v0.4 with the same Cursor version and model. Protected information and retry counts must not regress, no scenario may use more total tokens, and median usage must fall.
 
 ## Release evidence
 

@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.5.0 - 2026-07-10
+
+### Added
+
+- Adaptive semantic-density guidance for main-agent chat, delegation prompts, and generic subagent results.
+- `/compact-session` and an explicit-only skill for verified state snapshots that continue in a fresh Cursor task.
+- Policy and release checks for protected information, subagent inheritance, artifact boundaries, and context-neutral integration.
+
+### Changed
+
+- Extended cost budgets and efficiency reviews to cover communication waste and over-compression risk.
+- Kept the recurring plugin baseline at 436 estimated tokens while adding the communication policy.
+- Removed redundant generic concision instructions from reviewer agents so the always-on rule remains the shared source.
+
 ## 0.4.0 - 2026-07-10
 
 ### Added

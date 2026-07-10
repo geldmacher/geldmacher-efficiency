@@ -7,7 +7,7 @@ description: Set Cursor cost guardrails for RTK, context, shell output, and vali
 
 ## Goal
 
-Reduce Cursor spend by controlling token-heavy context, shell output, repeated exploration, avoidable retries, and validation cost.
+Reduce Cursor spend by controlling token-heavy context, shell output, communication, repeated exploration, avoidable retries, and validation cost.
 
 This skill does not plan the task, compile handoffs, assign roles or define implementation steps. It only defines cost controls that can be used beside any existing workflow.
 
@@ -22,6 +22,9 @@ Check for:
 - large file dumps where narrow ranges would work
 - repeated reads of unchanged files
 - command output kept beyond the evidence needed
+- assistant replies that restate the request, narrate routine work, or repeat conclusions
+- delegation prompts that resend unrelated history
+- subagent results that repeat known context instead of returning new evidence
 - non-dry-run setup, publishing, generation, or migrations
 - guessing that is likely to cause rework
 - skipped cheap validation that would prevent expensive follow-up
@@ -36,11 +39,14 @@ Use this structure:
 3. `RTK requirements`
 4. `Context limits`
 5. `Shell-output limits`
-6. `Dry-run requirements`
-7. `Validation budget`
-8. `Stop and ask when`
+6. `Communication limits`
+7. `Dry-run requirements`
+8. `Validation budget`
+9. `Stop and ask when`
 
 Keep the output short and operational. Each item must be a constraint or cost-saving measure, not an implementation step.
+
+Communication limits should require result-first replies without routine narration, task-relevant delegation context only, and delta-only subagent results that retain decisive evidence, deviations, uncertainty, and the next action when applicable. Compression must not remove constraints, negations, ordering, exact identifiers, or risk information.
 
 When RTK is available, create the snapshot with `rtk gain --project --format json` and report its `summary.total_commands`, `total_input`, `total_output`, `total_saved`, and `avg_savings_pct` fields. Otherwise use `unavailable` with a reason. Treat the snapshot as cumulative project history, not a task delta.
 

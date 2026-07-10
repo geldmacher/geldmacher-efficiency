@@ -30,5 +30,3 @@ Check:
 - **Diagnostic risks**: bullets or `none`
 - **Missing validation**: bullets or `none`
 - **Recommended fixes**: bullets or `none`
-
-Keep the review concise and evidence-backed.

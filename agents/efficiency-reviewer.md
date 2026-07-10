@@ -16,19 +16,23 @@ Check for:
 - broad scans where targeted `rg` or file reads would have been enough
 - repeated reads of unchanged context
 - excessive command output kept in chat
+- repeated request context, routine narration, or redundant conclusions in chat
+- oversized delegation prompts or subagent results that restate known context
 - missing dry-run before global setup, publishing, generation, or migrations
 - skipped cheap verification that would materially reduce risk
 - over-testing or expensive validation disproportionate to the change
 - correctness risk caused by spending too little context
+- ambiguity, retries, or clarification caused by over-compressed communication
 
 ## Output
 
 - **Verdict**: `efficient` | `mostly efficient` | `wasteful` | `insufficient evidence`
 - **RTK usage**: bullets or `none`
 - **Context discipline**: bullets or `none`
+- **Communication density**: bullets or `none`
 - **Validation economy**: bullets or `none`
 - **Risks from under-spending**: bullets or `none`
 - **Cost snapshot**: cumulative project values, same-task delta, or `unavailable`
 - **Cost adjustments**: `none` or concrete measures for the next Cursor session
 
-Keep the review concise and evidence-backed. Do not modify files.
+Do not modify files.

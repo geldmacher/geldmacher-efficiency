@@ -50,3 +50,41 @@ test("the always-on rule does not carry setup or measurement workflows", () => {
   const rule = read("rules/cursor-efficiency.mdc");
   assert.doesNotMatch(rule, /rtk init|rtk gain|v0\.1/);
 });
+
+test("the always-on rule preserves meaning while compressing communication", () => {
+  const rule = read("rules/cursor-efficiency.mdc");
+  assert.match(rule, /Result first/);
+  assert.match(rule, /chat\/handoffs minimal, complete/);
+  for (const expected of [
+    "constraints",
+    "evidence",
+    "uncertainty",
+    "negation",
+    "conditions",
+    "causality",
+    "order",
+    "exact identifiers",
+    "paths",
+    "commands",
+    "numbers",
+    "errors",
+  ]) assert.ok(rule.includes(expected), `missing semantic-preservation policy: ${expected}`);
+  assert.match(rule, /Delegate relevant context/);
+  assert.match(rule, /return only new findings/);
+  assert.match(rule, /Chat style doesn't constrain artifacts/);
+});
+
+test("session compaction is explicit, readonly, and unavailable to automatic invocation", () => {
+  const skillPath = join(defaultRoot, "skills/session-context-compaction/SKILL.md");
+  const fields = parseFrontmatter(skillPath);
+  const skill = read("skills/session-context-compaction/SKILL.md");
+  const command = read("commands/compact-session.md");
+
+  assert.equal(fields["disable-model-invocation"], true);
+  assert.match(command, /session-context-compaction/);
+  assert.match(command, /do not plan work, assign roles, modify files/);
+  assert.match(skill, /do not create an implementation plan, assign roles, edit files/);
+  assert.match(skill, /confirmed.*inferred.*unverified/);
+  assert.match(skill, /fresh Cursor task/);
+  assert.match(skill, /current task does not remove existing history/);
+});

@@ -36,7 +36,8 @@ Classify findings into:
 
 1. Conversation history
    - Usually not a repo edit.
-   - Recommend a fresh chat with a compact handoff.
+   - Recommend `/compact-session`, then a fresh Cursor task with its verified state snapshot.
+   - State that adding a snapshot to the current task does not remove existing history.
 2. Always-loaded repo guidance
    - `AGENTS.md`
    - `.cursor/rules/**`
