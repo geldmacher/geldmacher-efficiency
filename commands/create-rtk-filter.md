@@ -1,19 +1,8 @@
 ---
 name: create-rtk-filter
-description: Initiate creation or update of a project-specific RTK filter file, with special handling for DDEV command surfaces.
+description: Design project-specific RTK filters that preserve useful diagnostics.
 ---
 
 # Create RTK Filter
 
-Use when a user wants project-specific RTK filters, especially for DDEV-backed project commands.
-
-1. Follow the `project-rtk-filter` skill.
-2. Inventory project-specific command surfaces before editing `.rtk/filters.toml`.
-3. Prioritize documented finite commands that agents run often: checks, tests, lint, builds, evaluations, docs gates, generators, cache maintenance, and DDEV wrappers.
-4. For DDEV projects, match the outer `ddev ...` command and include `ddev exec "cd <subdir> && ..."` variants when they are documented or clearly used by the project.
-5. Exclude long-running dev servers, watchers, shells, interactive commands, and streaming log commands.
-6. Create or update `.rtk/filters.toml` with conservative filters and inline tests.
-7. Run `rtk verify --require-all` when available. Treat warnings such as `untrusted project filters skipped` as missing project-filter validation; ask the user to run `rtk trust` from the project root and then retry verification.
-8. Delegate to `rtk-filter-reviewer` only when changes cover at least three filter groups or introduce broadly matching generic regexes. Review smaller changes inline.
-
-The result should include a compact summary of command groups covered, commands excluded, verification results, and remaining RTK setup or trust requirements.
+Read and follow [rtk-filter-design](../skills/rtk-filter-design/SKILL.md). Base the filter on the project's real command surface, preserve failure evidence, and use the verification facilities available in the current Cursor environment.

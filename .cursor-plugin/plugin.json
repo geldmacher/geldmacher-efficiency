@@ -1,26 +1,30 @@
 {
   "name": "geldmacher-efficiency",
   "displayName": "Efficiency",
-  "description": "RTK-backed Cursor cost controls, semantic communication, context optimization, and lean validation.",
-  "version": "0.5.0",
+  "description": "Lightweight Cursor-native helpers for RTK, context economy, proportional validation, and efficiency review.",
+  "version": "1.0.0",
   "author": {
     "name": "Dennis Geldmacher",
     "email": "geldmacher.dennis@outlook.de"
   },
   "license": "MIT",
+  "homepage": "https://github.com/geldmacher/efficiency",
+  "repository": "https://github.com/geldmacher/efficiency",
+  "category": "developer-tools",
   "keywords": [
     "rtk",
     "efficiency",
-    "cost",
     "tokens",
     "context",
     "optimization",
     "cursor",
-    "agents"
+    "review"
   ],
-  "logo": "assets/logo.svg",
-  "commands": "./commands/",
-  "agents": "./agents/",
-  "skills": "./skills/",
-  "rules": "./rules/"
+  "tags": [
+    "tokens",
+    "context",
+    "rtk",
+    "optimization"
+  ],
+  "logo": "assets/logo.svg"
 }

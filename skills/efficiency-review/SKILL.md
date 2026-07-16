@@ -1,54 +1,12 @@
 ---
 name: efficiency-review
-description: Review completed Cursor work for RTK, context, and validation waste.
+description: Review resource, context, communication, and validation economy.
 ---
 
 # Efficiency Review
 
-## Goal
+Review the evidence available for context selection, command output, communication density, delegation, retries, validation choice, and any explicit cost constraints. Focus on whether resources were spent proportionally; do not substitute this review for functional correctness, security, or domain acceptance.
 
-Identify whether completed work spent unnecessary model context, communication, or shell output, missed RTK usage, skipped low-cost validation, or missed cost-reduction measures.
+Distinguish same-session measurements, cumulative statistics, calculations, estimates, and qualitative observations. Use RTK data when suitable, and state when the evidence does not support a task-specific savings claim.
 
-This review is not a delivery review and not a workflow review. It does not judge whether the task outcome is correct except where validation spending creates cost risk.
-
-## Inputs
-
-- original request
-- cost budget, if any
-- changed files or artifacts
-- shell commands and relevant output
-- relevant delegation prompts and subagent results
-- validation evidence
-- known deviations and skipped checks
-
-## Readonly Delegation
-
-Review inline by default. Delegate to the `efficiency-reviewer` agent only when at least one threshold is met:
-
-- six or more changed files
-- ten or more relevant shell commands
-- global configuration or publishing changes
-- contradictory or materially incomplete evidence
-
-If delegation is required but unavailable, state that limitation and perform a concise readonly review in chat.
-
-## Cost Snapshot
-
-When RTK is available, run `rtk gain --project --format json` and report `summary.total_commands`, `total_input`, `total_output`, `total_saved`, and `avg_savings_pct`. Calculate a task delta only when the cost budget contains a baseline captured in the same task. Otherwise label the values as cumulative project history.
-
-Do not use `rtk discover` or `rtk session` as Cursor metrics. Do not calculate monetary cost unless the user provides model-specific input and output token prices.
-
-## Output
-
-Use this structure:
-
-- **Verdict**: `efficient` | `mostly efficient` | `wasteful` | `insufficient evidence`
-- **RTK usage**: evidence-backed bullets
-- **Context discipline**: targeted reads, broad scans, repeated reads, or missing context
-- **Communication density**: request restatement, routine narration, repeated conclusions, delegation scope, delta-only subagent results, or ambiguity caused by over-compression
-- **Validation economy**: checks run, cheap checks skipped, or over-testing
-- **Risks from under-spending**: correctness risks caused by too little context or validation
-- **Cost snapshot**: cumulative project values, same-task delta, or `unavailable`
-- **Cost adjustments**: `none` or concrete measures for the next Cursor session
-
-Prefer specific command, file, and verification evidence over general advice.
+Lead with the overall assessment, then give only material findings, under-spending risks, and concrete adjustments. The optional efficiency-auditor may be used when an independent pass would improve the decision; its absence is not itself a finding or blocker.
